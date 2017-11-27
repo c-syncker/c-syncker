@@ -1,0 +1,61 @@
+# depslib dependency file v1.0
+1511564523 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/Sincronizador.cpp
+	"Sincronizador.h"
+
+1511564189 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/Sincronizador.h
+	<iostream>
+	<map>
+	<list>
+	<vector>
+	<string>
+	<numeric>
+	<algorithm>
+	<functional>
+	<unordered_set>
+
+1511549936 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/main.cpp
+	<iostream>
+
+1510311260 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/Escriba.cpp
+	"Escriba.h"
+
+1510311260 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/Escriba.h
+	<iostream>
+	<list>
+	<unordered_map>
+	<bits/stdc++.h>
+	<fstream>
+	<sstream>
+	<regex>
+	<string>
+
+1511563358 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/ProcessaEntrada.cpp
+	"ProcessaEntrada.h"
+
+1511399620 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/ProcessaEntrada.h
+	<iostream>
+	<list>
+	<string>
+	<map>
+	<unordered_map>
+	<sstream>
+
+1511563414 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/SistemaDeMemoria.cpp
+	"SistemaDeMemoria.h"
+
+1511563342 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/SistemaDeMemoria.h
+	<map>
+	<list>
+	<iostream>
+
+1511564495 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/main.cpp
+	<iostream>
+	"Sincronizador.h"
+	"Escriba.h"
+	"ProcessaEntrada.h"
+	"SistemaDeMemoria.h"
+	<list>
+	<string>
+	<ctype.h>
+	<sstream>
+
