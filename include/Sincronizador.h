@@ -210,6 +210,7 @@ class Sincronizador
         */
         void calculaDerivadaDiscreta (map <int,int> &uniaoDeTabuadasOrdenadas, list<int> &listaDerivadaDiscreta);
 
+        void reverteLista(list<int> &listaOrdemNormal, list<int> &listaOrdemInversa);
 
     protected:
 

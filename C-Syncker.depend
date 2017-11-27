@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1511564523 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/Sincronizador.cpp
+1511809061 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/Sincronizador.cpp
 	"Sincronizador.h"
 
-1511564189 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/Sincronizador.h
+1511787939 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/Sincronizador.h
 	<iostream>
 	<map>
 	<list>
@@ -29,10 +29,10 @@
 	<regex>
 	<string>
 
-1511563358 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/ProcessaEntrada.cpp
+1511810754 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/ProcessaEntrada.cpp
 	"ProcessaEntrada.h"
 
-1511399620 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/ProcessaEntrada.h
+1511810448 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/ProcessaEntrada.h
 	<iostream>
 	<list>
 	<string>
@@ -48,7 +48,7 @@
 	<list>
 	<iostream>
 
-1511564495 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/main.cpp
+1511811044 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/main.cpp
 	<iostream>
 	"Sincronizador.h"
 	"Escriba.h"

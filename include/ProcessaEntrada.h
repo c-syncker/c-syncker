@@ -15,6 +15,7 @@ class ProcessaEntrada
 
 
     unordered_map<string, int> alturasCifrasEntrada; // contem as alturas e seus correspondentes numericos
+    unordered_map<int, string> dicionarioInteirosAlturas; // contem os inteiros e as alturas relacionadas a eles
     map<string, list<int> > dicionarioDeQualidadesMusicais; // todas as qualidades musicais ficam aqui
 
 
@@ -28,7 +29,7 @@ class ProcessaEntrada
         virtual ~ProcessaEntrada();
 
         void converteAlturasParaInteiros(list<string> &entradas);
-
+        void converteInteirosParaAlturas(list<int> &entradasInteiro, list<string> &saidaString);
         list<int> retornaAlturasNumericas();
         list<int> retornaDuracoes();
         list<string> retornaAlturasString();
@@ -42,7 +43,8 @@ class ProcessaEntrada
     private:
         void separaListas(string listaDeEntrada, list<string> &listaAlturas);
         void separaListas(string listaDeEntrada, list<int> &listaDuracoes);
-
+        void resetLista(list<int> &entrada);
+        void resetLista(list<string> &entrada);
 };
 
 #endif // PROCESSAENTRADA_H

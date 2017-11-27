@@ -168,8 +168,8 @@ void Sincronizador::associaAlturasDuracoes(list<string> &listaAlturas, list<int>
     desdobraListas(duracoes, MMCsizeListas,duracoesDesdobradas);
 
 
-    cout << "tamanho durações desdobradas " << duracoesDesdobradas.size() << endl;
-    cout << "tamanho alturas desdobradas " << listaDesdobramentoAlturas.size() << endl;
+    //cout << "tamanho durações desdobradas " << duracoesDesdobradas.size() << endl;
+    //cout << "tamanho alturas desdobradas " << listaDesdobramentoAlturas.size() << endl;
 
     for(int i=0; i<MMCsizeListas; i++){
         combinacaoAlturasDuracoes[i] = listaDesdobramentoAlturas.front() + to_string(duracoesDesdobradas.front());
@@ -360,16 +360,7 @@ void Sincronizador::calculaDerivadaDiscreta (list<int> &listaParaDerivar, list<i
             aux = *it;
         }
     }
-        // IMPRIMIR A LISTA DE VALORES
-    cout << endl;
-    for(list<int>::iterator iterador = listaDerivadaDiscreta.begin(); iterador != listaDerivadaDiscreta.end(); iterador++){
-        if(iterador == listaDerivadaDiscreta.end()){
-            break;
-        }else{
-            cout << *iterador << ",";
-        }
-    }
-    cout << endl;
+
 }
 
 
@@ -403,5 +394,16 @@ void Sincronizador::acumuladorDeListas(list<int> &listaParaAcumular, list<int> &
     //for(auto iteradorLista : listaAcumulada){
     //    cout << iteradorLista << endl;
     //}
+
+}
+
+void Sincronizador::reverteLista(list<int> &listaOrdemNormal, list<int> &listaOrdemInversa){
+
+    for(list<int>::reverse_iterator ordemInversa = listaOrdemNormal.rbegin(); ordemInversa != listaOrdemNormal.rend(); ++ordemInversa){
+        listaOrdemInversa.push_back(*ordemInversa);
+        //cout << *ordemInversa << ", ";
+    }
+    //cout << endl;
+
 
 }

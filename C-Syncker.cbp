@@ -33,9 +33,15 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="include/Escriba.h" />
+		<Unit filename="include/ProcessaEntrada.h" />
 		<Unit filename="include/Sincronizador.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="include/SistemaDeMemoria.h" />
+		<Unit filename="src/Escriba.cpp" />
+		<Unit filename="src/ProcessaEntrada.cpp" />
 		<Unit filename="src/Sincronizador.cpp" />
+		<Unit filename="src/SistemaDeMemoria.cpp" />
+		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

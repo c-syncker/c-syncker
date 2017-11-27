@@ -9,12 +9,6 @@
 #include <sstream>
 
 
-
-
-// TODO: Criar uma classe que somente lê listas informadas pelo usuário
-// em diversas sintaxes e "quebra em listas que possam ser processadas
-// olhar o arquivo main1.cpp no dropbox
-
 using namespace std;
 
 void exibeMenu(){
@@ -24,9 +18,55 @@ void exibeMenu(){
     cout << "3) Derivar listas numéricas" << endl;
     cout << "4) Acumular lista" << endl;
     cout << "5) Reverter lista" << endl;
-    cout << "6) Recuperar" << endl;
+    //cout << "6) Recuperar" << endl;
+    cout << "6) Associar alturas e durações" << endl;
     cout << "Esc para encerrar" << endl;
 
+}
+
+
+void exibeLista(list<int> listaParaExibir){
+    int aux;
+    aux = *listaParaExibir.rbegin();
+
+    cout << endl;
+
+    for(list<int>::iterator elemento=listaParaExibir.begin(); elemento!=listaParaExibir.end(); ++elemento){
+        if(*elemento != aux){
+            cout << *elemento << ", ";
+        }else{
+            cout << *elemento;
+        }
+    }
+    cout << endl;
+}
+
+void exibeLista(list<string> listaParaExibir){
+    string aux;
+    aux = *listaParaExibir.rbegin();
+
+    cout << endl;
+
+    for(list<string>::iterator elemento=listaParaExibir.begin(); elemento!=listaParaExibir.end(); ++elemento){
+        if(*elemento != aux){
+            cout << *elemento << ", ";
+        }else{
+            cout << *elemento;
+        }
+    }
+    cout << endl;
+}
+
+void resetLista(list<int> &entrada){
+    while(entrada.begin() != entrada.end()){
+        entrada.pop_front();
+    }
+}
+
+void resetLista(list<string> &entrada){
+    while(entrada.begin() != entrada.end()){
+        entrada.pop_front();
+    }
 }
 
 
@@ -60,7 +100,7 @@ int main(){
 
     char opcaoMenu=0;
     int opcaoMenuInterno, idLista;
-
+    int lista1, lista2;
     // *********************************************************//
     //                FIM DA DECLARAÇÃO DE VARIÁVEIS            //
     // *********************************************************//
@@ -87,9 +127,7 @@ int main(){
                     // adiciona essa lista no registrador interno
                     registradorDeListas.adicionaNaMemoria(listaAlturasInteirosSaida);
 
-                    //for (auto alturaInteiro:listaAlturasInteirosSaida){
-                    //   cout << alturaInteiro << endl;
-                   // }
+                    resetLista(listaAlturasInteirosSaida);
 
                 }else if(opcaoMenuInterno == 2){
                     cin >> text;
@@ -97,7 +135,7 @@ int main(){
                     duracoes = processadorDeEntradas.retornaDuracoes();
 
                     registradorDeListas.adicionaNaMemoria(duracoes);
-
+                    resetLista(duracoes);
 
                 }
 
@@ -110,11 +148,14 @@ int main(){
                 cout << "Escolha a lista informando o número ao lado dela" << endl;
                 registradorDeListas.mostraListasNaMemoria();
 
-                int lista1, lista2;
+
                 cin >> lista1 >> lista2;
                 listaAuxiliar1 = registradorDeListas.retornaLista(lista1);
                 listaAuxiliar2 = registradorDeListas.retornaLista(lista2);
                 syncker.sincronizaListasApenasNumeros(listaAuxiliar1, listaAuxiliar2);
+
+                resetLista(listaAuxiliar1);
+                resetLista(listaAuxiliar2);
 
             break;
 
@@ -125,6 +166,9 @@ int main(){
                 cin >> idLista;
                 listaAuxiliar1 = registradorDeListas.retornaLista(idLista);
                 syncker.calculaDerivadaDiscreta(listaAuxiliar1, listaDerivadas);
+                exibeLista(listaDerivadas);
+
+                resetLista(listaDerivadas);
 
             break;
 
@@ -136,22 +180,52 @@ int main(){
                 cin >> idLista;
                 listaAuxiliar1 = registradorDeListas.retornaLista(idLista);
                 syncker.acumuladorDeListas(listaAuxiliar1, listaSaidasAcumuladas);
-                for(auto saida:listaSaidasAcumuladas){
-                    cout << saida << ",";
-                }
-                cout << endl;
+
+                exibeLista(listaSaidasAcumuladas);
+
+                resetLista(listaSaidasAcumuladas);
             break;
 
             case '5':
                 cout << "Reverter listas" << endl;
                 registradorDeListas.mostraListasNaMemoria();
+                cout << "Escolha a lista informando o número ao lado dela" << endl;
+                cin >> idLista;
+                listaAuxiliar1 = registradorDeListas.retornaLista(idLista);
+                syncker.reverteLista(listaAuxiliar1, listaAuxiliar2);
 
+                exibeLista(listaAuxiliar2);
+
+                resetLista(listaAuxiliar1);
+                resetLista(listaAuxiliar2);
             break;
 
-            case '6':
+            /*case '6':
                 cout << "Recuperar" << endl;
                 registradorDeListas.mostraListasNaMemoria();
 
+            break;*/
+
+            case '6':
+                cout << "Escolha a lista informando o número ao lado dela" << endl;
+                registradorDeListas.mostraListasNaMemoria();
+
+
+                cin >> lista1 >> lista2;
+                listaAuxiliar1 = registradorDeListas.retornaLista(lista2);
+                listaAuxiliar2 = registradorDeListas.retornaLista(lista1);
+                processadorDeEntradas.converteInteirosParaAlturas(listaAuxiliar2, alturas);
+                cout << "Resultado da associação" << endl;
+                syncker.associaAlturasDuracoes(alturas, listaAuxiliar1);
+
+                // devo guardar uma referência cruzada na classe SistemaDeMemoria?
+                // um dicionário alturas->inteiros e inteiros->alturas?
+                // esse conversor me poderia me auxiliar nesse método de sincronizar alturas e durações
+                // pois preciso de uma lista de string e outra de inteiros.
+
+                resetLista(listaAuxiliar1);
+                resetLista(listaAuxiliar2);
+                resetLista(alturas);
             break;
 
             case 27:

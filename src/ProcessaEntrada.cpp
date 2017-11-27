@@ -19,6 +19,21 @@ ProcessaEntrada::ProcessaEntrada()
     alturasCifrasEntrada["a"]   = 69;
     alturasCifrasEntrada["a#"]  = 70;
     alturasCifrasEntrada["b"]   = 71;
+
+
+    dicionarioInteirosAlturas[60] = "c";
+    dicionarioInteirosAlturas[61] = "c#";
+    dicionarioInteirosAlturas[62] = "d";
+    dicionarioInteirosAlturas[63] = "d#";
+    dicionarioInteirosAlturas[64] = "e";
+    dicionarioInteirosAlturas[65] = "f";
+    dicionarioInteirosAlturas[66] = "f#";
+    dicionarioInteirosAlturas[67] = "g";
+    dicionarioInteirosAlturas[68] = "g#";
+    dicionarioInteirosAlturas[69] = "a";
+    dicionarioInteirosAlturas[70] = "a#";
+    dicionarioInteirosAlturas[71] = "b";
+
 }
 
 ProcessaEntrada::~ProcessaEntrada(){
@@ -30,17 +45,24 @@ int ProcessaEntrada::mostraValorMIDIAlturas(string altura){
 }
 
 void ProcessaEntrada::converteAlturasParaInteiros(list<string> &entradas){
-
+    resetLista(alturasConvertidas);
     for(auto altura : entradas){
         alturasConvertidas.push_back(alturasCifrasEntrada[altura]);
     }
 
 }
 
+void ProcessaEntrada::converteInteirosParaAlturas(list<int> &entradasInteiro, list<string> &saidaString){
+    for(auto elemento : entradasInteiro){
+        saidaString.push_back(dicionarioInteirosAlturas[elemento]);
+    }
+}
+
 
 
 void ProcessaEntrada::verificaEntrada(string listaDeEntrada, int opcaoDeEntrada){
-
+    resetLista(alturasCifras);
+    resetLista(duracoes);
     if(opcaoDeEntrada == 1){
         separaListas(listaDeEntrada, alturasCifras);
         converteAlturasParaInteiros(alturasCifras);
@@ -95,6 +117,8 @@ void ProcessaEntrada::separaListas(string listaDeEntrada, list<string> &listaAlt
 // e converte essa entrada numa lista de números, que representam
 // as durações
 void ProcessaEntrada::separaListas(string listaDeEntrada, list<int> &listaDuracoes){
+
+
     int i;
     stringstream ss;
     size_t pos;
@@ -153,3 +177,14 @@ list<string> ProcessaEntrada::retornaAlturasString(){
     return alturasCifras;
 }
 
+void ProcessaEntrada::resetLista(list<int> &entrada){
+    while(entrada.begin() != entrada.end()){
+        entrada.pop_front();
+    }
+}
+
+void ProcessaEntrada::resetLista(list<string> &entrada){
+    while(entrada.begin() != entrada.end()){
+        entrada.pop_front();
+    }
+}
