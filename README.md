@@ -1,10 +1,7 @@
-# C-Syncker0.1.0
-# Versão 0.1.1
+# C-Syncker
 
-C-Syncker0.1.1
-Mudanças no menu:
-    *Removida opção de recuperar lista
-Listas agora não concatenam novas entradas!
+Software desenvolvido pela Escola de Música da Universidade Federal do Rio Grande do Norte para 
+auxiliar na escrita de partituras e composições usando como base o software Lilypond.
 
-Novidades:
-Sincronização de alturas e durações com alturas na forma de cifras!
+
+Documentação em <https://c-syncker.github.io/Documentacao/>
