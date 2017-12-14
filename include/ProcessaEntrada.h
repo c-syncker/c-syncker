@@ -7,6 +7,7 @@
 #include <map>
 #include <unordered_map>
 #include <sstream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -35,6 +36,8 @@ class ProcessaEntrada
         list<string> retornaAlturasString();
 
         void verificaEntrada(string listaDeEntrada, int opcaoDeEntrada);
+        int verificaTipoLista(list<int> listaDeEntrada);
+        int verificaTipoLista(list<string> listaDeEntrada);
 
         int mostraValorMIDIAlturas(string altura);
 

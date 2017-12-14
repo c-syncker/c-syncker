@@ -116,6 +116,11 @@ void Escriba::initLilypond(string filename){
     system(x);
 
     // inicializa o evince para renderizar o pdf
+
+    string extensao = filename.substr(filename.find_last_of('.'));
+    int posicao = filename.find(extensao);
+
+    filename.erase(posicao, filename.size());
     pdf_file = filename + ".pdf";
     command = "evince " + pdf_file;
     x = command.c_str();
@@ -146,14 +151,16 @@ void Escriba::separaAlturasDeDuracoes(string input,list<string> &listaAlturas, l
 
     // primeiro separa todas as listaAlturas da entrada
     alturas = regex_replace(entrada, altura, format, regex_constants::format_default);
+
     // separa as durações na entrada
     duracoes = regex_replace(entrada, duracao, format, regex_constants::format_default);
+
 
     // adiciono cada altura da string de listaAlturas (a) numa lista removendo os separadores
     for(auto it: alturas){
         if(it != ','){
             if(it != ' ')
-            listaAlturas.push_back(string(1, it));
+                listaAlturas.push_back(string(1, it));
         }
 
     }
@@ -161,26 +168,29 @@ void Escriba::separaAlturasDeDuracoes(string input,list<string> &listaAlturas, l
     // adiciono cada duração da string de durações (d) numa lista removendo os separadores
     string aux_string;
     for(auto it: duracoes){ // itera pela string para substituir as vírgulas
-        if(it == ','){
-            it = '0'; // substitui a vírgula com um caractere de vazio
-        }else{
-            aux_string += it;
+        if(it != ','){
+            listaDuracoes.push_back(string(1, it)); // substitui a vírgula com um caractere de vazio
+       // }else{
+            //aux_string += it + " ";
         }
     }
+
+   /* cout << "String sem virgulas " << aux_string << endl;
 
     istringstream iss(aux_string); // cria um stream sobre a string sem vírgulas
     string subs;
     do{
         iss >> subs; // a cada espaço, substitui o conteúdo em subs pelo valor antes do espaço
         listaDuracoes.push_back(subs); // adiciono na lista de durações
+        cout << subs << endl;
     }while(getline(iss, subs, ' ')); // a string de durações é da forma [2 1 1 2]
                                     // remove os espaços colocando cada elemento na lista de durações
-
+    */
 }
 
 
 
-string Escriba::substituiAlturaCoringaDoDicionarioDeDuracoes(unordered_map<int, string> &dicionarioDuracoes, list<string> &listaAlturas,
+string Escriba::substituiAlturaCoringaDoDicionarioDeDuracoesString(list<string> &listaAlturas,
                                 list<string> &listaDuracoes){
 
     /*
@@ -210,7 +220,43 @@ string Escriba::substituiAlturaCoringaDoDicionarioDeDuracoes(unordered_map<int, 
 
         // utiliza a regex_replace para pegar o valor do dicionário de durações
         // e substituir pela entrada do usuário
-        aux += regex_replace(dicionarioDuracoes[indice], substituiAlturasDicionarioDuracoes,
+        aux += regex_replace(dicionarioDuracoesFigLilypond[indice], substituiAlturasDicionarioDuracoes,
+                            formataDuracoes, regex_constants::format_default) + " ";
+        listaDuracoes.pop_front();
+    }
+    // cout << aux << " "; // exibo os resultados que irão ser impressos no lilypond
+    return aux;
+}
+
+string Escriba::substituiAlturaCoringaDoDicionarioDeDuracoes(list<string> &listaAlturas, list<int> &listaDuracoes){
+
+    /*
+        recebe como entrada um dicionario contedo as alturas e durações, uma lista
+        com alturas e uma lista com durações.
+        Usa cada elemento da lista de durações como índice do dicionário para
+        buscar um shape (forma?) que processe a altura dada corretamente
+        (dicionário = a16          entrada =>  altura = c duração  1)
+        se transforma em:
+        dicionario[1] = a16 -> a = c --> c16 essa é a string final enviada para o lilypond
+
+    */
+
+    string aux;
+    int indice;
+
+    while(listaDuracoes.size() != 0){
+        string formataDuracoes = listaAlturas.front(); // substitui no dicionário de durações com a primeira
+                                                     // ocorrência (topo) da lista de alturas
+        listaAlturas.pop_front();   // apaga o topo para avançar na lista
+
+        // essa regex vai substituir as alturas no dicionário pela altura desejada
+        regex substituiAlturasDicionarioDuracoes("[[:alpha:]]+");
+
+
+        indice = listaDuracoes.front();
+        // utiliza a regex_replace para pegar o valor do dicionário de durações
+        // e substituir pela entrada do usuário
+        aux += regex_replace(dicionarioDuracoesFigLilypond[indice], substituiAlturasDicionarioDuracoes,
                             formataDuracoes, regex_constants::format_default) + " ";
         listaDuracoes.pop_front();
     }

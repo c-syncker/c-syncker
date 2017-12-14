@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1511809061 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/Sincronizador.cpp
+1512934812 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/Sincronizador.cpp
 	"Sincronizador.h"
 
-1511787939 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/Sincronizador.h
+1512141609 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/Sincronizador.h
 	<iostream>
 	<map>
 	<list>
@@ -16,10 +16,10 @@
 1511549936 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/main.cpp
 	<iostream>
 
-1510311260 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/Escriba.cpp
+1513007522 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/Escriba.cpp
 	"Escriba.h"
 
-1510311260 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/Escriba.h
+1512139784 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/Escriba.h
 	<iostream>
 	<list>
 	<unordered_map>
@@ -29,26 +29,27 @@
 	<regex>
 	<string>
 
-1511810754 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/ProcessaEntrada.cpp
+1513274469 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/ProcessaEntrada.cpp
 	"ProcessaEntrada.h"
 
-1511810448 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/ProcessaEntrada.h
+1512999155 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/ProcessaEntrada.h
 	<iostream>
 	<list>
 	<string>
 	<map>
 	<unordered_map>
 	<sstream>
+	<bits/stdc++.h>
 
-1511563414 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/SistemaDeMemoria.cpp
+1513269347 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/SistemaDeMemoria.cpp
 	"SistemaDeMemoria.h"
 
-1511563342 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/SistemaDeMemoria.h
+1513008265 /home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/include/SistemaDeMemoria.h
 	<map>
 	<list>
 	<iostream>
 
-1511811044 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/main.cpp
+1513272464 source:/home/matheus/Dropbox/C-Syncker/C-Syncker0.1.0/C-Syncker/src/main.cpp
 	<iostream>
 	"Sincronizador.h"
 	"Escriba.h"

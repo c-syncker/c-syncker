@@ -131,7 +131,7 @@ void Sincronizador::calculaDerivadaDiscreta (map <int,int> &uniaoDeTabuadasOrden
 
 
 // CONSIDERE ELIMINAR O PARÂMETRO listaDesdobramentoAlturas E FAZÊ-LO LOCAL
-void Sincronizador::associaAlturasDuracoes(list<string> &listaAlturas, list<int> &duracoes){
+void Sincronizador::associaAlturasDuracoes(list<string> &listaAlturas, list<int> &duracoes, list<string> &listaResultante){
 
     /*
         Dadas uma lista com as alturas e outra com as durações,
@@ -183,7 +183,8 @@ void Sincronizador::associaAlturasDuracoes(list<string> &listaAlturas, list<int>
     }
 
     for(int i=0; i<MMCsizeListas; i++){
-        cout << combinacaoAlturasDuracoes[i] << endl;
+        //cout << combinacaoAlturasDuracoes[i] << endl;
+        listaResultante.push_back(combinacaoAlturasDuracoes[i]);
     }
 }
 
@@ -266,7 +267,7 @@ int Sincronizador::acumule (list<int> &listaElementosParaAcumular){
 }
 
 
-void Sincronizador::sincronizaListasApenasNumeros(list<int> &lista1, list<int> &lista2){
+void Sincronizador::sincronizaListasApenasNumeros(list<int> &lista1, list<int> &lista2, list<int> &listaResultante){
     //int init = 0;
     //T init2 = 0;
     int somatorioElementosLista1, somatorioElementosLista2;
@@ -328,6 +329,20 @@ void Sincronizador::sincronizaListasApenasNumeros(list<int> &lista1, list<int> &
 
     list<int> listaDerivada;
     calculaDerivadaDiscreta(listaSemRepeticoes, listaDerivada);
+
+    /*
+    for(auto a : listaDerivada){
+
+        if (a != listaDerivada.back()){
+            cout << a << ",";
+        }else{
+            cout << a;
+        }
+        listaResultante.push_back(a);
+    }
+    cout << "\n" ;
+    */
+    listaResultante = listaDerivada;
 
 }
 
@@ -405,5 +420,38 @@ void Sincronizador::reverteLista(list<int> &listaOrdemNormal, list<int> &listaOr
     }
     //cout << endl;
 
+}
 
+
+
+void Sincronizador::exibeLista(list<int> listaParaExibir){
+    int aux;
+    aux = *listaParaExibir.rbegin();
+
+    cout << endl;
+
+    for(list<int>::iterator elemento=listaParaExibir.begin(); elemento!=listaParaExibir.end(); ++elemento){
+        if(*elemento != aux){
+            cout << *elemento << ", ";
+        }else{
+            cout << *elemento;
+        }
+    }
+    cout << endl;
+}
+
+void Sincronizador::exibeLista(list<string> listaParaExibir){
+    string aux;
+    aux = *listaParaExibir.rbegin();
+
+    cout << endl;
+
+    for(list<string>::iterator elemento=listaParaExibir.begin(); elemento!=listaParaExibir.end(); ++elemento){
+        if(*elemento != aux){
+            cout << *elemento << ", ";
+        }else{
+            cout << *elemento;
+        }
+    }
+    cout << endl;
 }

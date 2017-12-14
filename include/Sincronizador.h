@@ -84,7 +84,7 @@ class Sincronizador
             @param listaDesdobramentoAlturas: contém as repetições de alturas quando a listaAlturas é desdobrada
             @param duracoes: lista com as durações que serão associadas
         */
-        void associaAlturasDuracoes(list<string> &listaAlturas, list<int> &duracoes);
+        void associaAlturasDuracoes(list<string> &listaAlturas, list<int> &duracoes, list<string> &listaResultante);
 
         int coeficienteDeRepeticoes(int MMClistasEnvolvidas, int somatorioElementosLista);
 
@@ -156,7 +156,7 @@ class Sincronizador
             @param lista2: segunda lista de entrada para ser sincronizada.
 
         */
-        void sincronizaListasApenasNumeros(list<int> &lista1, list<int> &lista2);
+        void sincronizaListasApenasNumeros(list<int> &lista1, list<int> &lista2, list<int> &listaResultante);
 
 
         //! Dadas duas listas, realiza uma união entre elas.
@@ -211,11 +211,14 @@ class Sincronizador
         void calculaDerivadaDiscreta (map <int,int> &uniaoDeTabuadasOrdenadas, list<int> &listaDerivadaDiscreta);
 
         void reverteLista(list<int> &listaOrdemNormal, list<int> &listaOrdemInversa);
+        void exibeLista(list<string> listaParaExibir);
+        void exibeLista(list<int> listaParaExibir);
 
     protected:
 
     private:
         int acumule (list<int> &listaElementosParaAcumular);
+
 };
 
 #endif // SINCRONIZADOR_H

@@ -61,12 +61,14 @@ void ProcessaEntrada::converteInteirosParaAlturas(list<int> &entradasInteiro, li
 
 
 void ProcessaEntrada::verificaEntrada(string listaDeEntrada, int opcaoDeEntrada){
-    resetLista(alturasCifras);
-    resetLista(duracoes);
+
+
     if(opcaoDeEntrada == 1){
+        resetLista(alturasCifras);
         separaListas(listaDeEntrada, alturasCifras);
         converteAlturasParaInteiros(alturasCifras);
     }else if(opcaoDeEntrada == 2){
+        resetLista(duracoes);
         separaListas(listaDeEntrada, duracoes);
     }
 
@@ -117,18 +119,16 @@ void ProcessaEntrada::separaListas(string listaDeEntrada, list<string> &listaAlt
 // e converte essa entrada numa lista de números, que representam
 // as durações
 void ProcessaEntrada::separaListas(string listaDeEntrada, list<int> &listaDuracoes){
-
-
     int i;
     stringstream ss;
-    size_t pos;
-	pos = listaDeEntrada.find(',');
-	while(pos!=string::npos)
+    size_t position;
+	position = listaDeEntrada.find(',');
+	while(position!=string::npos)
 	{
-		string num = listaDeEntrada.substr(0,pos);
-		listaDeEntrada.erase(0,pos+1);
+		string num = listaDeEntrada.substr(0,position);
+		listaDeEntrada.erase(0,position+1);
 		ss.str(num);
-
+        cout << num << endl;
 		ss >> i;
 
 		if (!ss.fail()){
@@ -136,7 +136,7 @@ void ProcessaEntrada::separaListas(string listaDeEntrada, list<int> &listaDuraco
 		}else{
             cout << "Entrada invalida. Por favor entre com números 1,2,3 ..."  << endl;
 		}
-		pos = listaDeEntrada.find(',');
+		position = listaDeEntrada.find(',');
 		ss.clear();
 		ss.str("");
 	}
@@ -149,6 +149,7 @@ void ProcessaEntrada::separaListas(string listaDeEntrada, list<int> &listaDuraco
 	}
 
 	ss.clear();
+
 	ss.str("");
 
 }
@@ -187,4 +188,24 @@ void ProcessaEntrada::resetLista(list<string> &entrada){
     while(entrada.begin() != entrada.end()){
         entrada.pop_front();
     }
+}
+
+int ProcessaEntrada::verificaTipoLista(list<int> listaDeEntrada){
+
+    if ( typeid(listaDeEntrada).name() == typeid(list<int>).name() ){
+        return 1;
+    }else{
+        return 0;
+    }
+
+}
+
+int ProcessaEntrada::verificaTipoLista(list<string> listaDeEntrada){
+
+    if ( typeid(listaDeEntrada).name() == typeid(list<string>).name() ){
+        return 2;
+    }else{
+        return 0;
+    }
+
 }

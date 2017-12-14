@@ -86,8 +86,9 @@ class Escriba
             @param listaDuracoes: durações usadas como índices do dicionário para achar a altura correspondente
             @param saida: string contendo as notas que serão escritas no arquivo a ser compilado pelo Lilypond
         */
-        string substituiAlturaCoringaDoDicionarioDeDuracoes(unordered_map<int, string> &dicionarioDuracoes, list<string> &listaAlturas,
-                                                            list<string> &listaDuracoes);
+        string substituiAlturaCoringaDoDicionarioDeDuracoesString(list<string> &listaAlturas, list<string> &listaDuracoes);
+
+        string substituiAlturaCoringaDoDicionarioDeDuracoes(list<string> &listaAlturas, list<int> &listaDuracoes);
 
         //! Retorna o nome do arquivo .ly.
         string getFilename();
