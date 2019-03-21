@@ -1,0 +1,70 @@
+
+void SynckerPlane::numereNosDoMapa()
+{
+
+    string valor;
+    map< xml_node, vector<xml_node> >::iterator it = indices.begin();
+    it->first.attribute("index").set_value("1");
+    // ADICIONAR UM NOVO FILHO COM O ATRIBUTO INDEX E O VALOR DO ÍNDICE
+
+    for(; it != indices.end(); it++)
+    {          
+        if(it == indices.begin())
+        {
+            continue;
+            
+        }
+        for(int i = 0; i < it->second.size(); i++)
+        {
+            valor = it->first.attribute("index").value();
+            if( strcmp (valor.c_str(), "") != 0 )
+            {
+                valor.append(".");
+            }
+            valor.append( to_string(i+1) );
+            it->second[i].append_attribute("index").set_value( valor.c_str() );
+            
+            if(valor != "1" && valor != "2"){
+                index[valor] = it->first;
+                //cout << i+1 << " " << it->second[i].attribute("index").value() << endl;
+            }
+        
+            //cout << it->second[i].attribute("index").value() << endl;
+            //cout << "\tID filho: " << it->second[i].attribute("ID").value() << " Nome: " << \
+                        it->second[i].attribute("TEXT").value() << endl;
+            
+        }
+    }
+}
+
+
+string SynckerPlane::convertaListaEmString(list<string> &entrada)
+{   
+    string resultado = "";
+
+    for(auto valor : entrada){
+        resultado += valor + ",";
+    }
+    size_t pos = resultado.length()-1;
+    resultado[pos] = '\0';
+    return resultado;
+}
+
+string SynckerPlane::unaListasDeAlturasDuracoes(vector<string> &alturas, vector<string> &duracoes)
+{
+    string uniaoDasListas, alturasUnidas, duracoesUnidas, aux0;
+   
+    vector<string> aux1, aux2;
+    int cont1=0, cont2=0;
+
+    for(int i=0; i<alturas.size(); i++)
+    {   
+        aux0 = alturas[i] + duracoes[i] + ",";
+        uniaoDasListas += aux0;
+        // uniaoDasListas = aux1[i] + aux2[i] + ",";
+    }
+    uniaoDasListas.erase(uniaoDasListas.length()-1);
+    
+    return uniaoDasListas;
+
+}
