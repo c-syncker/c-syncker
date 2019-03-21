@@ -1,0 +1,2 @@
+@image{teste-1}
+@c eof
